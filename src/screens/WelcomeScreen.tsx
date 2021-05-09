@@ -1,7 +1,7 @@
 import React from 'react'
-import { Text, Image, StyleSheet, View } from 'react-native'
+import { Text, Image, StyleSheet, View, TouchableOpacity, Dimensions } from 'react-native'
+import { Entypo} from '@expo/vector-icons'
 
-import Button from '../components/Button'
 
 import wateringImg from '../assets/watering.png'
 import colors from '../styles/colors'
@@ -14,14 +14,16 @@ const WelcomeScreen = () => {
                 suas plantas {'\n'}
                 de forma fácil
                 </Text>
-            <Image source={wateringImg} style={styles.image}/>
+            <Image source={wateringImg} style={styles.image} resizeMode='contain' />
             <Text style={styles.subtitle} >
                 Não esqueça mais de regar suas plantas. 
                 Nós cuidamos de lembrar você sempre que precisar.
             </Text>
-            <Button 
-                title='Avançar'
-            />
+            <TouchableOpacity style={styles.button} activeOpacity={0.7}>
+            <Text style={styles.buttonText} >
+                <Entypo name='chevron-right' style={styles.buttonIcon} />
+            </Text>
+            </TouchableOpacity>
         </View>
     )
 }
@@ -30,7 +32,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'space-between'
+        justifyContent: 'space-around'
     },
     title: {
         marginTop: 70,
@@ -46,9 +48,25 @@ const styles = StyleSheet.create({
         color: colors.heading
     },
     image: {
-        height: 284,
-        width: 292
-    }
+        height: Dimensions.get('window').width * 0.7
+    },
+    button: {
+        backgroundColor: colors.green,
+        height: 56,
+        width: 56,
+        borderRadius: 16,
+        marginBottom: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
+        
+    },
+    buttonText: {
+        color: colors.white,
+        fontSize: 24,
+    },
+    buttonIcon:{
+        fontSize: 24,
+    },
 })
 
 export default WelcomeScreen
