@@ -1,6 +1,7 @@
 import React from 'react'
 import { Text, Image, StyleSheet, View, TouchableOpacity, Dimensions } from 'react-native'
 import { Entypo} from '@expo/vector-icons'
+import { useNavigation } from '@react-navigation/core'
 
 
 import wateringImg from '../assets/watering.png'
@@ -8,6 +9,13 @@ import colors from '../styles/colors'
 import fonts from '../styles/fonts'
 
 const WelcomeScreen = () => {
+
+    const navigation = useNavigation()
+
+    function handlestart(){
+        navigation.navigate('UserIdentification')
+    }
+
     return (
         <View style={styles.container} >
             <Text style={styles.title} >
@@ -20,7 +28,7 @@ const WelcomeScreen = () => {
                 Não esqueça mais de regar suas plantas. 
                 Nós cuidamos de lembrar você sempre que precisar.
             </Text>
-            <TouchableOpacity style={styles.button} activeOpacity={0.7}>
+            <TouchableOpacity style={styles.button} activeOpacity={0.7} onPress={handlestart}>
             <Text>
                 <Entypo name='chevron-right' style={styles.buttonIcon} />
             </Text>

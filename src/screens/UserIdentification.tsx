@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, View, TextInput, KeyboardAvoidingView, Platform } from 'react-native'
+import { useNavigation } from '@react-navigation/core'
 
 import Button from  '../components/Button'
 
@@ -7,6 +8,12 @@ import colors from '../styles/colors'
 import fonts from '../styles/fonts'
 
 const UserIdentification = () => {
+
+    const navigation = useNavigation()
+
+    function handleSubmit(){
+        navigation.navigate('Confirmation')
+    }
 
     //states
     const [isOnFocus, setIsOnFocus] = useState(false)
@@ -46,7 +53,7 @@ const UserIdentification = () => {
                         onChangeText={handleText}
                     />
                     <View style={styles.footer}>
-                        <Button title='confirmar'/>
+                        <Button title='confirmar' onPress={handleSubmit} />
                      </View>
                 </View>
             </KeyboardAvoidingView>

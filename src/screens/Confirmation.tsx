@@ -20,7 +20,7 @@ const Confirmation = () => {
                     plantinhas com muiio cuidado.
                 </Text>
             <View style={styles.footer}>
-                <Button title='confirmar'/>
+                <Button title='Começar'/>
             </View>
             </View >
         </SafeAreaView>
