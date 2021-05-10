@@ -21,11 +21,11 @@ const AppRoutes: React.FC = () => (
             name='WelcomeScreen'
             component={WelcomeScreen}
         />
-                <stackRoutes.Screen 
+        <stackRoutes.Screen 
             name='UserIdentification'
             component={UserIdentification}
         />
-                <stackRoutes.Screen 
+        <stackRoutes.Screen 
             name='Confirmation'
             component={Confirmation}
         />

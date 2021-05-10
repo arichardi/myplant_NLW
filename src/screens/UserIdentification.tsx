@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View, TextInput, KeyboardAvoidingView, Platform } from 'react-native'
+import { StyleSheet, Text, View, TextInput, KeyboardAvoidingView, Platform, TouchableWithoutFeedback, Keyboard } from 'react-native'
 import { useNavigation } from '@react-navigation/core'
 
 import Button from  '../components/Button'
@@ -37,6 +37,7 @@ const UserIdentification = () => {
             <KeyboardAvoidingView style={styles.container} 
             behavior={ Platform.OS === 'ios' ? 'padding' : 'height'}
             >
+                <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
                 <View style={styles.form} >
                     <Text style={styles.icon}>
                         { isOnFilled? '😊' : '😃' }
@@ -56,6 +57,7 @@ const UserIdentification = () => {
                         <Button title='confirmar' onPress={handleSubmit} />
                      </View>
                 </View>
+                </TouchableWithoutFeedback>
             </KeyboardAvoidingView>
         </View>
     )
