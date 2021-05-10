@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         paddingVertical: 20,
         backgroundColor: colors.white,
         marginTop: 30,
-        padding: 20
+
     },
     greeting:{
         fontSize: 32,
