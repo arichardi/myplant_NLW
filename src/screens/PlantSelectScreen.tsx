@@ -27,15 +27,21 @@ interface PlantProps {
     }
 }
 
+interface EnviromentSelectedProps {
+
+}
+
 const PlantSelectScreen = () => {
 
     const [ enviroment, setEnviroment] = useState<EnviromentProps[]>()
     const [ plants, setplants] = useState<PlantProps[]>()
+    const [ enviromentSelected, setEnviromentSelected] = useState('all')
 
         //enviroment data
     useEffect( () => {
         async function fetchEnviroment(){
-            const { data } = await api.get('plants_environments')
+            const { data } = await api
+            .get('plants_environments?_sort=title&_order=asc')
             setEnviroment([
                 {
                     key: 'all',
@@ -49,11 +55,14 @@ const PlantSelectScreen = () => {
     //plant data
     useEffect( () => {
         async function fetchPlant(){
-            const {data} = await api.get('plants')
+            const {data} = await api.get('plants?_sort=name&_order=asc')
             setplants(data)
         }
         fetchPlant()
     }, [])
+
+
+    //onPressFunctions
 
 
     return (
@@ -67,7 +76,11 @@ const PlantSelectScreen = () => {
                 <FlatList 
                     data={enviroment}
                     renderItem={ ({item}) => (
-                        <EnviromentButton title={item.title} />
+                        <EnviromentButton 
+                        title={item.title} 
+                        active={ item.key === enviromentSelected}
+                        onPress={ () => handleEnviromentSelect(item.key)}
+                        />
                     )}
                     horizontal
                     showsHorizontalScrollIndicator={false}
@@ -124,7 +137,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     contentContainerStyle:{
-        marginTop: 20,
+        paddingVertical: 20
     },
 
 })
