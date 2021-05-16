@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { StyleSheet, Text, View, FlatList } from 'react-native'
+import { StyleSheet, Text, View, FlatList, ActivityIndicator } from 'react-native'
 
 import EnviromentButton from '../components/EnviromentButton'
 import Header from '../components/Header'
@@ -33,14 +33,21 @@ interface EnviromentSelectedProps {
 }
 
 const PlantSelectScreen = () => {
-
+    //enviroments from api
     const [ enviroment, setEnviroment] = useState<EnviromentProps[]>()
+    //all plants
     const [ plants, setplants] = useState<PlantProps[]>()
+    //filtered plants based on plants
     const [ filteredPlants, setFilteredPlants] = useState<PlantProps[]>([])
+    //enviroment selected
     const [ enviromentSelected, setEnviromentSelected] = useState('all')
+    //loading during fetch plants
     const [ loading, setLoading] = useState(true)
+    //qty of plants pages
     const [page, setPage] = useState(1)
+    //
     const [loadMore, setLoadMore] = useState(false)
+
     const [loadedAll, setLoadedAll] = useState(false)
 
     //onPressFunctions
@@ -135,6 +142,9 @@ const PlantSelectScreen = () => {
                 contentContainerStyle={styles.contentContainerStyle}
                 onEndReachedThreshold={0.1}
                 onEndReached={({ distanceFromEnd}) => handleFetchMore(distanceFromEnd)}
+                ListFooterComponent={
+                   loadMore ? <ActivityIndicator color={colors.green}/> : <></>
+                 }
                 />
             </View>
         </View>
