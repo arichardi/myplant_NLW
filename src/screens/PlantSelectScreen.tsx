@@ -96,7 +96,7 @@ const PlantSelectScreen = () => {
     }
 
     function handlePlantSelect(plant: PlantProps){
-        navigation.navigate('PlantSaveScreen')
+        navigation.navigate('PlantSaveScreen', { plant })
     }
 
     //enviroment data
