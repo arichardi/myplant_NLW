@@ -45,9 +45,9 @@ const PlantSelectScreen = () => {
     const [ loading, setLoading] = useState(true)
     //qty of plants pages
     const [page, setPage] = useState(1)
-    //
+    //There's more cards to load
     const [loadMore, setLoadMore] = useState(false)
-
+    //load all plants cards
     const [loadedAll, setLoadedAll] = useState(false)
 
     //onPressFunctions
